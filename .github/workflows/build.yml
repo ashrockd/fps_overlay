@@ -44,6 +44,15 @@ jobs:
             echo "has_keystore=false" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Debug keystore integrity (temporary)
+        if: steps.keystore.outputs.has_keystore == 'true'
+        env:
+          ANDROID_KEYSTORE_PATH: ${{ steps.keystore.outputs.path }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          sha256sum "$ANDROID_KEYSTORE_PATH"
+          keytool -list -keystore "$ANDROID_KEYSTORE_PATH" -storepass "$ANDROID_KEYSTORE_PASSWORD"
+
       - name: Build signed release AAB
         if: steps.keystore.outputs.has_keystore == 'true'
         env:
