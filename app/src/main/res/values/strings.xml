@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FPS Overlay</string>
+    <string name="placeholder_text">FPS Overlay\nDrag the counter, tap the gear icon for settings</string>
+    <string name="settings">Settings</string>
+    <string name="fps_placeholder">0 FPS</string>
+    <string name="settings_title">FPS Overlay Settings</string>
+    <string name="font_size_label">Font size</string>
+    <string name="font_label">Font</string>
+    <string name="color_label">Color</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+</resources>
