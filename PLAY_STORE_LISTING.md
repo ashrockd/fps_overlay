@@ -13,7 +13,9 @@ you (they need your account/payment).
 - [x] Release signing wired to GitHub Actions secrets (see `README.md`)
 - [x] CI builds a signed `.aab` (Android App Bundle) — the format Play
       Store requires for new apps
-- [x] No permissions, no network access, no ads/analytics SDKs
+- [x] No network access, no ads/analytics SDKs. Uses `SYSTEM_ALERT_WINDOW`
+      (draw over other apps) + a foreground service so the overlay stays
+      visible while using other apps.
 - [x] Privacy policy page in `docs/privacy-policy.html`
 - [x] Store icon (512x512) and feature graphic (1024x500) in `store_assets/`
 
@@ -41,6 +43,13 @@ you (they need your account/payment).
    Paste that URL into the Play Console "App content" → "Privacy policy" field.
 6. **Data safety form**: answer "No" to data collection/sharing — this app
    collects nothing (see the privacy policy for the exact wording).
+6a. **Permissions declaration form / "Draw over other apps" declaration**:
+   Play Console has a separate policy questionnaire for apps requesting
+   `SYSTEM_ALERT_WINDOW`. When it asks for a justification, use something
+   like: "Core functionality — the app's sole purpose is displaying a
+   live FPS counter on top of other apps and games. Without this
+   permission the overlay could only be shown while this app itself is in
+   the foreground, defeating the app's purpose."
 7. **Content rating questionnaire**: answer honestly; this app has no
    objectionable content and should get the lowest rating tier (e.g. "Everyone").
 8. **Target audience**: not designed for children.

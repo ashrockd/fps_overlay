@@ -30,7 +30,19 @@
   automatically if you uninstall the app.</p>
 
   <h2>Permissions</h2>
-  <p>The app requests no runtime or special permissions.</p>
+  <ul>
+    <li><strong>Display over other apps</strong> (SYSTEM_ALERT_WINDOW) &mdash;
+      used only to draw the FPS counter on top of other apps and games. It
+      is never used to read, capture, or interact with the content of other
+      apps.</li>
+    <li><strong>Foreground service</strong> &mdash; keeps the overlay running
+      while you use other apps, with a persistent low-priority notification
+      as required by Android.</li>
+    <li><strong>Notifications</strong> &mdash; used solely to show that
+      status notification; no other notifications are ever sent.</li>
+  </ul>
+  <p>None of these permissions are used to collect, read, or transmit any
+  data. The app still makes no network requests.</p>
 
   <h2>Third parties</h2>
   <p>The app contains no advertising, analytics, or third-party SDKs.</p>
