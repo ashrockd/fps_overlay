@@ -35,6 +35,11 @@ class OverlayService : Service() {
         private const val CHANNEL_ID = "fps_overlay_channel"
         private const val NOTIFICATION_ID = 1
 
+        // How often the on-screen number refreshes. Lower = more responsive
+        // but noisier; the FPS value itself is still computed from actual
+        // elapsed time, not assumed to be exactly this interval.
+        private const val UPDATE_INTERVAL_NS = 200_000_000L // 200ms = 5 updates/sec
+
         const val PREFS_NAME = "fps_overlay_prefs"
         const val KEY_SIZE = "font_size"
         const val KEY_FONT = "font_index"
@@ -57,7 +62,7 @@ class OverlayService : Service() {
             if (lastTimeNs == 0L) lastTimeNs = frameTimeNanos
             frameCount++
             val elapsedNs = frameTimeNanos - lastTimeNs
-            if (elapsedNs >= 1_000_000_000L) {
+            if (elapsedNs >= UPDATE_INTERVAL_NS) {
                 val fps = (frameCount * 1_000_000_000.0 / elapsedNs).roundToInt()
                 overlayView.text = "$fps FPS"
                 frameCount = 0
